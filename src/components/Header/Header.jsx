@@ -16,12 +16,10 @@ const Header = () => {
     const navItems = <>
 
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
-        <li> <Link className='font-semibold' to="/allToys">All Toys</Link> </li>
-        
-            <li> <Link className='font-semibold' to="/myToys">My Toys</Link> </li>
-            <li> <Link className='font-semibold' to="/addToy">Add a Toy</Link> </li>
-        
-        <li> <Link className='font-semibold' to="/blogs">Blogs</Link> </li>
+        <li> <Link className='font-semibold' to="/allToys">Add Tasks</Link> </li>
+
+        <li> <Link className='font-semibold' to="/myToys">Dashboard</Link> </li>
+
     </>
 
     const btn = <>
@@ -43,7 +41,7 @@ const Header = () => {
 
 
                 <div className='w-14 lg:w-52'>
-                    <h2 className='font-bold lg:text-3xl'>Camp <span className='text-red-600 font-semibold'>Mania</span></h2>
+                    <h2 className='font-bold lg:text-3xl'>To DO <span className='text-red-600 font-semibold'>List</span></h2>
                 </div>
 
             </div>
