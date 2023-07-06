@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // import SocialLogin from '../SocialLogin/SocialLogin';
-// import { AuthContext } from '../../providers/AuthProvider';
+import { AuthContext } from '../../providers/AuthProvider';
 // import useTitle from '../../hooks/useTitile';
 import Swal from 'sweetalert2';
 import Lottie from "lottie-react";
@@ -15,7 +15,7 @@ const Register = () => {
     const navigate = useNavigate();
 
 
-    // const { registerUser, logOut, updateUserData } = useContext(AuthContext)
+    const { registerUser, logOut, updateUserData } = useContext(AuthContext)
 
     const handelRegister = (event) => {
         event.preventDefault();
@@ -32,30 +32,30 @@ const Register = () => {
             return setError('Password must be greater than 6 characters');
         }
 
-        // registerUser(email, password)
-        //     .then(result => {
-        //         const loggedUser = result.user;
-        //         updateUserData(name, photoURL);
-        //         logOut()
-        //         console.log(loggedUser);
-        //         form.reset();
-        //         setError('')
-        //         setSuccess('Successfully Register!');
-        //         Swal.fire({
-        //             position: 'top-bottom',
-        //             icon: 'success',
-        //             title: 'Registration Successful!',
-        //             showConfirmButton: false,
-        //             timer: 1500
-        //           })
-        //           navigate('/login')
+        registerUser(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                updateUserData(name, photoURL);
+                logOut()
+                console.log(loggedUser);
+                form.reset();
+                setError('')
+                setSuccess('Successfully Register!');
+                Swal.fire({
+                    position: 'top-bottom',
+                    icon: 'success',
+                    title: 'Registration Successful!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  navigate('/login')
 
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //         setError('Try again there is something missing!')
+            })
+            .catch(error => {
+                console.log(error);
+                setError('Try again there is something missing!')
 
-        //     })
+            })
 
     }
 

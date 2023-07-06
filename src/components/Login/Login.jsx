@@ -4,14 +4,14 @@ import login from '../../../public/login.json';
 import Lottie from "lottie-react";
 
 // import SocialLogin from '../SocialLogin/SocialLogin';
-// import { AuthContext } from '../../providers/AuthProvider';
+import { AuthContext } from '../../providers/AuthProvider';
 // import useTitle from '../../hooks/useTitile';
 
 const Login = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('');
 
-    // const { signIn } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,19 +28,19 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
 
-        // signIn(email, password)
-        //     .then(result => {
-        //         const loggedUser = result.user;
-        //         console.log(loggedUser);
-        //         setError('');
-        //         form.reset();
-        //         setSuccess('successfully Login!');
-        //         navigate(from, { replace: true })
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //         setError('Email and password doesn,t match!');
-        //     })
+        signIn(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setError('');
+                form.reset();
+                setSuccess('successfully Login!');
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error);
+                setError('Email and password doesn,t match!');
+            })
     }
 
 
