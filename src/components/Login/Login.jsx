@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 
 // import SocialLogin from '../SocialLogin/SocialLogin';
 import { AuthContext } from '../../providers/AuthProvider';
+import SocialLogin from '../SocialLogin/SocialLogin';
 // import useTitle from '../../hooks/useTitile';
 
 const Login = () => {
@@ -86,7 +87,7 @@ const Login = () => {
 
                         </form>
                         <p className='my-4 text-center'>New to this site? <Link className='text-orange-600 font-bold' to="/register">Register</Link> </p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

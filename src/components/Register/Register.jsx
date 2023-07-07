@@ -6,6 +6,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import Lottie from "lottie-react";
 import reg from '../../../public/reg.json';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
 
@@ -123,7 +124,7 @@ const Register = () => {
 
                         </form>
                         <p className='my-4 text-center'>Already Have an account? <Link className='text-orange-600 font-bold' to="/login">Login</Link> </p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
