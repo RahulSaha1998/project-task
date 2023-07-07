@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const AllTask = () => {
 
-    const tasks = useLoaderData();
+    const loadedTask = useLoaderData();
+    const [tasks, setTasks] = useState(loadedTask);
+    
+    const handleDelete = _id => {
+        console.log(_id);
+        fetch(`http://localhost:5000/tasks/${_id}`,{
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    Swal.fire({
+                        position: 'top-bottom',
+                        icon: 'success',
+                        title: 'Delete Successful!',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                      const remaining = tasks.filter(task => task._id !== _id);
+                      setTasks(remaining);
+                }
+            })
+    }
 
     return (
         <div>
@@ -42,7 +66,7 @@ const AllTask = () => {
                                     <td className='text-center'><Link to='/update'>
                                     <button className='btn btn-info'>Update</button>
                                     </Link></td>
-                                    <td className='text-center'><button className='btn btn-error'>Delete</button></td>
+                                    <td className='text-center'><button onClick={()=> handleDelete(task._id)} className='btn btn-error'>Delete</button></td>
                                     
                             
                                 </tr>
