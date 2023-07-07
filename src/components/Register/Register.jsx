@@ -22,6 +22,7 @@ const Register = () => {
 
     const handelRegister = (event) => {
 
+    const [role, setRole] = useState("user");
         event.preventDefault();
         setSuccess('');
         setError('')
@@ -30,7 +31,8 @@ const Register = () => {
         const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, role, email, password, photoURL );
+        // console.log(name, role, email, password, photoURL );
+        const saveUser = {name: name, email: email, role: role};
 
         if (password.length < 6) {
             return setError('Password must be greater than 6 characters');
@@ -43,6 +45,15 @@ const Register = () => {
                 logOut()
                 console.log(loggedUser);
                 form.reset();
+                fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(saveUser)
+            });
+
+
                 setError('')
                 setSuccess('Successfully Register!');
                 Swal.fire({
@@ -52,7 +63,7 @@ const Register = () => {
                     showConfirmButton: false,
                     timer: 1500
                   })
-                  navigate('/login')
+                  navigate('/')
 
             })
             .catch(error => {

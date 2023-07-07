@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
@@ -8,6 +8,8 @@ const SocialLogin = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const [role, setRole] = useState("user");
+
     // console.log(location);
 
     const from = location.state?.from?.pathname || '/';
@@ -17,15 +19,27 @@ const SocialLogin = () => {
     const handleGoogleSignIn = () => {
         signInWGoogle()
         .then(result => {
-            // console.log(result.user);
-            Swal.fire({
-                position: 'top-bottom',
-                icon: 'success',
-                title: 'Successfully Login!',
-                showConfirmButton: false,
-                timer: 2000
-              })
-            navigate(from, { replace: true })
+            const loggedInUser = result.user;
+                console.log(loggedInUser);
+                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email, role: role }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                .then(res => res.json())
+                .then(() => {
+                    Swal.fire({
+                        position: 'top-bottom',
+                        icon: 'success',
+                        title: 'Login Successful!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    navigate(from, { replace: true });
+                })
         })
         .catch(error => console.log(error))
 
