@@ -6,13 +6,13 @@ const AllTask = () => {
 
     const loadedTask = useLoaderData();
     const [tasks, setTasks] = useState(loadedTask);
-    
+
     const handleDelete = _id => {
         console.log(_id);
-        fetch(`http://localhost:5000/tasks/${_id}`,{
+        fetch(`http://localhost:5000/tasks/${_id}`, {
             method: 'DELETE'
         })
-        .then(res => res.json())
+            .then(res => res.json())
             .then(data => {
                 console.log(data);
                 if (data.deletedCount > 0) {
@@ -22,9 +22,9 @@ const AllTask = () => {
                         title: 'Delete Successful!',
                         showConfirmButton: false,
                         timer: 1500
-                      })
-                      const remaining = tasks.filter(task => task._id !== _id);
-                      setTasks(remaining);
+                    })
+                    const remaining = tasks.filter(task => task._id !== _id);
+                    setTasks(remaining);
                 }
             })
     }
@@ -48,14 +48,14 @@ const AllTask = () => {
                     </thead>
                     <tbody>
 
-                  {/* Table Contents */}
+                        {/* Table Contents */}
 
                         {
                             tasks.map((task, index) =>
                                 <tr
-                                key={task._id}
-                                index={index}
-                                className='font-bold'
+                                    key={task._id}
+                                    index={index}
+                                    className='font-bold'
                                 >
                                     <th className='text-center'>{index + 1}</th>
                                     <td className='text-center'>{task.title}</td>
@@ -63,18 +63,13 @@ const AllTask = () => {
                                     <td className='text-center'>{task.date}</td>
                                     <td className='text-center'>{task.status}</td>
                                     <td className='text-center'>{task.name}</td>
-                                    <td className='text-center'><Link to='/update'>
-                                    <button className='btn btn-info'>Update</button>
+                                    <td className='text-center'><Link to={`/update/${task._id}`}>
+                                        <button className='btn btn-info'>Update</button>
                                     </Link></td>
-                                    <td className='text-center'><button onClick={()=> handleDelete(task._id)} className='btn btn-error'>Delete</button></td>
-                                    
-                            
+                                    <td className='text-center'><button onClick={() => handleDelete(task._id)} className='btn btn-error'>Delete</button></td>
                                 </tr>
-
                             )
                         }
-
-
                     </tbody>
                 </table>
             </div>

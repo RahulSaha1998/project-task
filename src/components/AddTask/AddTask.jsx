@@ -8,7 +8,7 @@ const AddTask = () => {
     const { user } = useContext(AuthContext);
 
 
-    const handelAddClass = async (event) => {
+    const handelAddTask = async (event) => {
         event.preventDefault();
         const form = event.target;
         const title = form.title.value;
@@ -64,7 +64,7 @@ const AddTask = () => {
                 <div className='bg-slate-200 rounded-lg shadow-xl mt-5 p-7'>
 
                     {/* <Fade> */}
-                    <form onSubmit={handelAddClass} className='w-[80%] mx-auto '>
+                    <form onSubmit={handelAddTask} className='w-[80%] mx-auto '>
                         <div className='grid grid-cols-2 gap-5'>
                             <div className="form-control">
                                 <label className="label">
