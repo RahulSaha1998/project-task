@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 // import SectionTitle from '../SectionTitle/SectionTitle';
 
 const AddTask = () => {
@@ -15,16 +16,38 @@ const AddTask = () => {
         const status = form.status.value;
         const desc = form.desc.value;
         const name = user?.displayName;
-        
 
-        const addedList = {
+
+        const task = {
             title: title,
             name,
             date,
             status,
             description: desc
         };
-        console.log(addedList);
+        console.log(task);
+
+        fetch('http://localhost:5000/tasks', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(task)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'top-bottom',
+                        icon: 'success',
+                        title: 'Task added Successfully to All Task!',
+                        showConfirmButton: false,
+                        timer: 2000
+                      })
+                    form.reset();
+                }
+            })
 
 
     }
@@ -81,18 +104,18 @@ const AddTask = () => {
                                     className="input input-info"
                                     readOnly />
                             </div>
-                            
+
                         </div>
                         <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Description</span>
-                                </label>
-                                <textarea type="text"
-                                    name='desc'
-                                    className="textarea textarea-info w-full"
-                                    required />
-                            </div>
-                        
+                            <label className="label">
+                                <span className="label-text">Description</span>
+                            </label>
+                            <textarea type="text"
+                                name='desc'
+                                className="textarea textarea-info w-full"
+                                required />
+                        </div>
+
                         <div className="form-control mt-6 text-center">
                             <input className="btn btn-block btn-info mb-6" type="submit" value='Add task' />
                         </div>

@@ -11,6 +11,7 @@ import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register';
 import AuthProvider from './providers/AuthProvider';
 import AllTask from './components/AllTask/AllTask';
+import Update from './components/Update/Update';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/allTask',
-        element: <AllTask></AllTask>
+        element: <AllTask></AllTask>,
+        loader: () => fetch('http://localhost:5000/tasks')
+      },
+      {
+        path: '/update',
+        element: <Update></Update>,
+        loader: () => fetch('http://localhost:5000/tasks')
       },
     ]
   },
