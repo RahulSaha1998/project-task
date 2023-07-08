@@ -17,6 +17,7 @@ import PrivateRoute from './route/PrivateRoute';
 import AdminRoute from './route/AdminRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HelmetProvider } from 'react-helmet-async';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 
 const queryClient = new QueryClient()
@@ -42,20 +43,25 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <AdminRoute><Dashboard></Dashboard></AdminRoute>,
-        loader: () => fetch('http://localhost:5000/tasks')
+        loader: () => fetch('https://project-task-server.vercel.app/tasks')
       },
       {
         path: '/allTask',
         element: <PrivateRoute><AllTask></AllTask></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/tasks')
+        loader: () => fetch('https://project-task-server.vercel.app/tasks')
       },
       {
         path: '/update/:id',
         element: <Update></Update>,
-        loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`)
+        loader: ({ params }) => fetch(`https://project-task-server.vercel.app/tasks/${params.id}`)
       },
+      
     ]
   },
+  {
+    path: '*',
+    element: <NotFoundPage></NotFoundPage>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

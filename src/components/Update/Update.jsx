@@ -29,7 +29,7 @@ const Update = () => {
         };
         console.log(updatedTask);
 
-        fetch(`http://localhost:5000/tasks/${loadedTask._id}`, {
+        fetch(`https://project-task-server.vercel.app/tasks/${loadedTask._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

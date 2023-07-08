@@ -26,7 +26,7 @@ const Dashboard = () => {
 
     const handleDelete = _id => {
         console.log(_id);
-        fetch(`http://localhost:5000/tasks/${_id}`, {
+        fetch(`https://project-task-server.vercel.app/tasks/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

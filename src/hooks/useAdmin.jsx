@@ -11,7 +11,7 @@ const useAdmin = () => {
         enabled: !loading && !!user?.email,
         queryFn: async () => {
             if (user?.email) {
-                const res = await axios.get(`http://localhost:5000/users/${user?.email}`);
+                const res = await axios.get(`https://project-task-server.vercel.app/users/${user?.email}`);
 
                 return res.data.admin;
             }
