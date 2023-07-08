@@ -5,6 +5,8 @@ import Lottie from "lottie-react";
 import g2 from '../../../public/g2.json'
 import useAdmin from '../../hooks/useAdmin';
 import DarkMode from '../DarkMode/DarkMode';
+import './Header.css'
+
 
 
 const Header = () => {
