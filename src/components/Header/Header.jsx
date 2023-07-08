@@ -4,6 +4,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import Lottie from "lottie-react";
 import g2 from '../../../public/g2.json'
 import useAdmin from '../../hooks/useAdmin';
+import DarkMode from '../DarkMode/DarkMode';
 
 
 const Header = () => {
@@ -69,7 +70,10 @@ const Header = () => {
                     {navItems}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end gap-2">
+                <div>
+                    <DarkMode/>
+                </div>
                 <div className=' flex items-center gap-4'>
                     {
                         user?.email ? <>

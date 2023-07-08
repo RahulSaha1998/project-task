@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 // import SectionTitle from '../SectionTitle/SectionTitle';
 
 const AddTask = () => {
@@ -66,12 +67,9 @@ const AddTask = () => {
     return (
         <div>
             <div className="hero h-full">
-                {/* <Helmet>
-                <title>Camp Arena | Add Class</title>
-            </Helmet> */}
-                {/* <div>
-                    <SectionTitle heading='Add Task' />
-                </div> */}
+                <Helmet>
+                    <title>Daily Work | Home</title>
+                </Helmet>
                 <div className='bg-slate-200 rounded-lg shadow-xl mt-5 p-7 mb-5'>
 
                     {/* <Fade> */}

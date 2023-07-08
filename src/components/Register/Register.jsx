@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import Lottie from "lottie-react";
 import reg from '../../../public/reg.json';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
 
@@ -73,6 +74,9 @@ const Register = () => {
 
     return (
         <div className='grid md:grid-cols-2 mx-auto'>
+            <Helmet>
+                <title>Daily Work | Register</title>
+            </Helmet>
             <div>
                 <h2>
                     <Lottie animationData={reg}></Lottie>

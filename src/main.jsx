@@ -16,6 +16,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 import PrivateRoute from './route/PrivateRoute';
 import AdminRoute from './route/AdminRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { HelmetProvider } from 'react-helmet-async';
+
 
 const queryClient = new QueryClient()
 
@@ -59,9 +61,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </HelmetProvider>
     </AuthProvider>
   </React.StrictMode>
 );

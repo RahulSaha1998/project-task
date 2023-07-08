@@ -2,12 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from '../../../public/login.json';
 import Lottie from "lottie-react";
-
-// import SocialLogin from '../SocialLogin/SocialLogin';
 import { AuthContext } from '../../providers/AuthProvider';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
-// import useTitle from '../../hooks/useTitile';
+import { Helmet } from 'react-helmet-async';
+
 
 const Login = () => {
     const [error, setError] = useState('')
@@ -58,6 +57,9 @@ const Login = () => {
 
     return (
         <div className='grid md:grid-cols-2 mx-auto'>
+            <Helmet>
+                <title>Daily Work | Login</title>
+            </Helmet>
             <div className="hero">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-slate-300">
                     <div className="card-body">

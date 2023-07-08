@@ -5,6 +5,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 import Chart1 from '../Chart/Chart1';
 import { AuthContext } from '../../providers/AuthProvider';
 import Loader from '../Loader/Loader';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -47,29 +48,33 @@ const Dashboard = () => {
 
     const handleFilter = () => {
         if (sortBy === 'asc') {
-          // Sort tasks in ascending order by title
-          const sortedTasks = [...filteredTasks].sort((a, b) =>
-            a.title.localeCompare(b.title)
-          );
-          setFilteredTasks(sortedTasks);
-          setSortBy('desc');
+            // Sort tasks in ascending order by title
+            const sortedTasks = [...filteredTasks].sort((a, b) =>
+                a.title.localeCompare(b.title)
+            );
+            setFilteredTasks(sortedTasks);
+            setSortBy('desc');
         } else {
-          // Sort tasks in descending order by title
-          const sortedTasks = [...filteredTasks].sort((a, b) =>
-            b.title.localeCompare(a.title)
-          );
-          setFilteredTasks(sortedTasks);
-          setSortBy('asc');
+            // Sort tasks in descending order by title
+            const sortedTasks = [...filteredTasks].sort((a, b) =>
+                b.title.localeCompare(a.title)
+            );
+            setFilteredTasks(sortedTasks);
+            setSortBy('asc');
         }
-      };
+    };
 
 
     return (
         <>
             <div>
+                <Helmet>
+                    <title>Daily Work | Dashboard</title>
+                </Helmet>
                 <div className='mt-10'>
                     <SectionTitle heading='View Tasks' />
                 </div>
+
 
                 <div className='text-center mb-2'>
                     <button onClick={handleFilter} className={`btn ${sortBy === 'asc' ? 'btn-success' : ' btn-info'}`}>
@@ -89,7 +94,7 @@ const Dashboard = () => {
                                 <th className='text-center'>Status</th>
                                 <th className='text-center'>Assigned User</th>
                                 <th className='text-center'>Action</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
@@ -110,7 +115,7 @@ const Dashboard = () => {
                                         <td className='text-center'>{task.status}</td>
                                         <td className='text-center'>{task.name}</td>
                                         <td className='text-center'><button onClick={() => handleDelete(task._id)} className='btn btn-error'>Delete</button></td>
-                                        
+
                                     </tr>
                                 )
                             }

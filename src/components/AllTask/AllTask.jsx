@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 import Loader from '../Loader/Loader';
+import { Helmet } from 'react-helmet-async';
 
 const AllTask = () => {
 
@@ -23,10 +24,11 @@ const AllTask = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                
                 if (data.deletedCount > 0) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Delete Successful!',
+                        title: 'Deleted Successfully!',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -39,6 +41,9 @@ const AllTask = () => {
     return (
         <div>
             <div className="overflow-x-auto card shadow-xl">
+            <Helmet>
+                <title>Daily Work | Tasks</title>
+            </Helmet>
                 <table className="table table-zebra">
                     {/* Table head */}
                     <thead>
