@@ -1,6 +1,6 @@
 ## Hello, Here is some features and live website link of this project.
 
-- Firebase Live Link -> https://assignment-task-15be0.web.app/
+- Firebase Live Site Link -> https://assignment-task-15be0.web.app/
 - Vercel Server Link -> https://project-task-server.vercel.app/
 
 admin login -> 
