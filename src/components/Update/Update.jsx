@@ -61,12 +61,11 @@ const Update = () => {
             </div>
             <div className="hero h-full">
                 <Helmet>
-                <title>Daily Work | Update</title>
+                <title>Daily Task | Update</title>
             </Helmet>
                 
                 <div className='bg-slate-200 rounded-lg shadow-xl p-7'>
 
-                    {/* <Fade> */}
                     <form onSubmit={handelUpdateTask} className='w-[80%] mx-auto '>
                         <div className='grid grid-cols-2 gap-5'>
                             <div className="form-control">
@@ -129,7 +128,6 @@ const Update = () => {
                             <input className="btn btn-block btn-info mb-6" type="submit" value='update' />
                         </div>
                     </form>
-                    {/* </Fade> */}
                 </div>
             </div>
         </div>

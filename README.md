@@ -1,8 +1,20 @@
 ## Hello, Here is some features and live website link of this project.
 
-- Firebase Live Link -> 
+- Firebase Live Link -> https://assignment-task-15be0.web.app/
 
-## User Login
+admin login -> 
+- email: jack@gmail.com
+- password: 123456
+
+user login -> 
+- email: pk@gmail.com
+- password: 123456
+
+- email: rio@gmail.com
+- password: 123456
+
+
+## User Login Details
 - First of all create login and registration page using Firebase Authentication.
 - There is dark mode and light mode.
 - User can also sign with google.
@@ -11,8 +23,7 @@
 -  There use can Update and delete the task.
 -Only authenticate user will visit the route and perform CRUD Operation.
 
-## Admin Login
-
+## Admin Login Details
 - Set a user as Admin from database.
 - Admin can see admin dashboard and can view tasks, delete the tasks and view the d3js chart.
 - use Axios for the admin login.

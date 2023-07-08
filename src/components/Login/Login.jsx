@@ -58,7 +58,7 @@ const Login = () => {
     return (
         <div className='grid md:grid-cols-2 mx-auto'>
             <Helmet>
-                <title>Daily Work | Login</title>
+                <title>Daily Task | Login</title>
             </Helmet>
             <div className="hero">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-slate-300">

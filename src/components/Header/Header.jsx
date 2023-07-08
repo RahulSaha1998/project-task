@@ -56,7 +56,7 @@ const Header = () => {
 
 
                 <div className='w-14 lg:w-52'>
-                    <h2 className='font-bold lg:text-3xl'>To Do <span className='text-red-600 font-semibold'>List</span></h2>
+                    <h2 className='font-bold lg:text-3xl'>Daily <span className='text-red-600 font-semibold'>Task</span></h2>
                 </div>
 
             </div>

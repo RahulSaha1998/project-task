@@ -69,7 +69,7 @@ const Dashboard = () => {
         <>
             <div>
                 <Helmet>
-                    <title>Daily Work | Dashboard</title>
+                    <title>Daily Task | Dashboard</title>
                 </Helmet>
                 <div className='mt-5 mb-5'>
                     <SectionTitle heading='View Tasks' />

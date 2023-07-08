@@ -46,7 +46,7 @@ const AllTask = () => {
             </div>
             <div className="overflow-x-auto card shadow-xl">
                 <Helmet>
-                    <title>Daily Work | Tasks</title>
+                    <title>Daily Task | Tasks</title>
                 </Helmet>
                 <table className="table table-zebra">
                     {/* Table head */}

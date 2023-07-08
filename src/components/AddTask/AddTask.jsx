@@ -71,7 +71,7 @@ const AddTask = () => {
             </div>
             <div className="hero h-full">
                 <Helmet>
-                    <title>Daily Work | Home</title>
+                    <title>Daily Task | Home</title>
                 </Helmet>
                 <div className='bg-slate-200 rounded-lg shadow-xl p-7 mb-5'>
                     <form onSubmit={handleAddTask} className='w-[80%] mx-auto '>
