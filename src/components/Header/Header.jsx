@@ -8,22 +8,27 @@ import useAdmin from '../../hooks/useAdmin';
 
 const Header = () => {
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, setLoading } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
 
 
     const handleLogOut = () => {
         logOut()
-            .then()
+            .then(() => setLoading(false))
             .catch(error => {
                 console.log(error)
             })
     }
 
-    
+
     const navItems = <>
 
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
+        {/* {
+            isAdmin &&
+            <li> <Link className='font-semibold' to="/dashboard">Admin Dashboard</Link> </li>
+        }
+        <li> <Link className='font-semibold' to="/allTask">Tasks</Link> </li> */}
         {
             isAdmin ? <>
                 <li> <Link className='font-semibold' to="/dashboard">Admin Dashboard</Link> </li>

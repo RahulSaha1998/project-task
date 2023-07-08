@@ -26,13 +26,13 @@ const AuthProvider = ({ children }) => {
             displayName: name,
             photoURL: photoURL
         })
-        .then(() => {
-            console.log('user profile updated')
-            setLoading(false);
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(() => {
+                console.log('user profile updated')
+                setLoading(false);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     const signInWGoogle = () => {
@@ -46,7 +46,12 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            setLoading(false)
+            if (currentUser) {
+                setLoading(false)
+            }
+            else{
+                setLoading(false)
+            }
         });
         return () => {
             unsubscribe()
@@ -56,6 +61,7 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user,
         loading,
+        setLoading,
         registerUser,
         signIn,
         updateUserData,

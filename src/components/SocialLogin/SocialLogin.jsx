@@ -30,7 +30,6 @@ const SocialLogin = () => {
                 .then(res => res.json())
                 .then(() => {
                     Swal.fire({
-                        position: 'top-bottom',
                         icon: 'success',
                         title: 'Login Successful!',
                         showConfirmButton: false,

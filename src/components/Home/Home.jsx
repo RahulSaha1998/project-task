@@ -6,11 +6,11 @@ import { AuthContext } from '../../providers/AuthProvider';
 
 const Home = () => {
 
-    // const { loading } = useContext(AuthContext);
+    const { loading } = useContext(AuthContext);
 
-    // if (loading) {
-    //     return <Loader></Loader>
-    // }
+    if (loading) {
+        return <Loader></Loader>
+    }
 
     return (
         <div>
