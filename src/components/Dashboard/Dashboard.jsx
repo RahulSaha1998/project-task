@@ -71,12 +71,12 @@ const Dashboard = () => {
                 <Helmet>
                     <title>Daily Work | Dashboard</title>
                 </Helmet>
-                <div className='mt-10'>
+                <div className='mt-5 mb-5'>
                     <SectionTitle heading='View Tasks' />
                 </div>
 
 
-                <div className='text-center mb-2'>
+                <div className='text-center mb-4'>
                     <button onClick={handleFilter} className={`btn ${sortBy === 'asc' ? 'btn-success' : ' btn-info'}`}>
                         {sortBy === 'asc' ? 'Sort A-Z' : 'Sort Z-A'}
                     </button>

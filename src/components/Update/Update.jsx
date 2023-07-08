@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 const Update = () => {
 
@@ -54,14 +56,15 @@ const Update = () => {
 
     return (
         <div>
+            <div className='mt-5 mb-5'>
+                <SectionTitle heading='Update Task' />
+            </div>
             <div className="hero h-full">
-                {/* <Helmet>
-                <title>Camp Arena | Add Class</title>
-            </Helmet> */}
-                {/* <div>
-                    <SectionTitle heading='Add Task' />
-                </div> */}
-                <div className='bg-slate-200 rounded-lg shadow-xl mt-5 p-7'>
+                <Helmet>
+                <title>Daily Work | Update</title>
+            </Helmet>
+                
+                <div className='bg-slate-200 rounded-lg shadow-xl p-7'>
 
                     {/* <Fade> */}
                     <form onSubmit={handelUpdateTask} className='w-[80%] mx-auto '>
@@ -77,9 +80,9 @@ const Update = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text">User Name</span>
                                 </label>
-                                <input type="text" placeholder={user?.displayName}
+                                <input type="text" defaultValue={user?.displayName}
                                     name='name'
                                     className="input input-info"
                                     readOnly />
@@ -123,7 +126,7 @@ const Update = () => {
                         </div>
 
                         <div className="form-control mt-6 text-center">
-                            <input className="btn btn-block btn-info mb-6" type="submit" value='Add task' />
+                            <input className="btn btn-block btn-info mb-6" type="submit" value='update' />
                         </div>
                     </form>
                     {/* </Fade> */}

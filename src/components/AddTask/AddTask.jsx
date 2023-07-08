@@ -3,7 +3,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-// import SectionTitle from '../SectionTitle/SectionTitle';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 const AddTask = () => {
 
@@ -66,13 +66,14 @@ const AddTask = () => {
 
     return (
         <div>
+            <div className='mt-5 mb-5'>
+                <SectionTitle heading='Add Task' />
+            </div>
             <div className="hero h-full">
                 <Helmet>
                     <title>Daily Work | Home</title>
                 </Helmet>
-                <div className='bg-slate-200 rounded-lg shadow-xl mt-5 p-7 mb-5'>
-
-                    {/* <Fade> */}
+                <div className='bg-slate-200 rounded-lg shadow-xl p-7 mb-5'>
                     <form onSubmit={handleAddTask} className='w-[80%] mx-auto '>
                         <div className='grid grid-cols-2 gap-5'>
                             <div className="form-control">
@@ -87,9 +88,9 @@ const AddTask = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text">User Name</span>
                                 </label>
-                                <input type="text" placeholder={user?.displayName}
+                                <input type="text" defaultValue={user?.displayName}
                                     name='name'
                                     className="input input-info"
                                     readOnly />
@@ -103,7 +104,6 @@ const AddTask = () => {
                                     className="input input-info"
                                     required />
                             </div>
-
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Status</span>
@@ -113,7 +113,6 @@ const AddTask = () => {
                                     className="input input-info"
                                     readOnly />
                             </div>
-
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -121,15 +120,14 @@ const AddTask = () => {
                             </label>
                             <textarea type="text"
                                 name='desc'
+                                placeholder='Write here . . .'
                                 className="textarea textarea-info w-full"
                                 required />
                         </div>
-
                         <div className="form-control mt-6 text-center">
-                            <input className="btn btn-block btn-info mb-6" type="submit" value='Add task' />
+                            <input className="btn btn-block btn-info mb-6" type="submit" value='Submit' />
                         </div>
                     </form>
-                    {/* </Fade> */}
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 import Loader from '../Loader/Loader';
 import { Helmet } from 'react-helmet-async';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 const AllTask = () => {
 
@@ -24,7 +25,7 @@ const AllTask = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                
+
                 if (data.deletedCount > 0) {
                     Swal.fire({
                         icon: 'success',
@@ -40,10 +41,13 @@ const AllTask = () => {
 
     return (
         <div>
+            <div className='mt-5 mb-5'>
+                <SectionTitle heading='All Tasks' />
+            </div>
             <div className="overflow-x-auto card shadow-xl">
-            <Helmet>
-                <title>Daily Work | Tasks</title>
-            </Helmet>
+                <Helmet>
+                    <title>Daily Work | Tasks</title>
+                </Helmet>
                 <table className="table table-zebra">
                     {/* Table head */}
                     <thead>
