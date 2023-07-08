@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "d3": "^7.8.5",
     "firebase": "^9.23.0",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
+    "react-d3": "^0.4.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.1",
     "react-icons": "^4.10.1",

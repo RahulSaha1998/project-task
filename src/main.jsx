@@ -12,6 +12,7 @@ import Register from './components/Register/Register';
 import AuthProvider from './providers/AuthProvider';
 import AllTask from './components/AllTask/AllTask';
 import Update from './components/Update/Update';
+import Dashboard from './components/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+        loader: () => fetch('http://localhost:5000/tasks')
       },
       {
         path: '/allTask',

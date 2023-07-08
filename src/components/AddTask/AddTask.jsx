@@ -41,7 +41,7 @@ const AddTask = () => {
                     Swal.fire({
                         position: 'top-bottom',
                         icon: 'success',
-                        title: 'Task added Successfully to All Task!',
+                        title: 'Successfully added to Tasks!',
                         showConfirmButton: false,
                         timer: 2000
                       })
@@ -61,7 +61,7 @@ const AddTask = () => {
                 {/* <div>
                     <SectionTitle heading='Add Task' />
                 </div> */}
-                <div className='bg-slate-200 rounded-lg shadow-xl mt-5 p-7'>
+                <div className='bg-slate-200 rounded-lg shadow-xl mt-5 p-7 mb-5'>
 
                     {/* <Fade> */}
                     <form onSubmit={handelAddTask} className='w-[80%] mx-auto '>

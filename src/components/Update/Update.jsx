@@ -54,8 +54,6 @@ const Update = () => {
 
     return (
         <div>
-            <h2> Hello from update: {loadedTask.name}</h2>
-
             <div className="hero h-full">
                 {/* <Helmet>
                 <title>Camp Arena | Add Class</title>
