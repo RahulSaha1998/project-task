@@ -21,8 +21,6 @@ const Register = () => {
     const { registerUser, logOut, updateUserData } = useContext(AuthContext)
 
     const handelRegister = (event) => {
-
-    const [role, setRole] = useState("user");
         event.preventDefault();
         setSuccess('');
         setError('')
@@ -31,7 +29,7 @@ const Register = () => {
         const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        // console.log(name, role, email, password, photoURL );
+        console.log(name, role, email, password, photoURL );
         const saveUser = {name: name, email: email, role: role};
 
         if (password.length < 6) {
@@ -57,13 +55,12 @@ const Register = () => {
                 setError('')
                 setSuccess('Successfully Register!');
                 Swal.fire({
-                    position: 'top-bottom',
                     icon: 'success',
                     title: 'Registration Successful!',
                     showConfirmButton: false,
                     timer: 1500
                   })
-                  navigate('/')
+                  navigate('/login')
 
             })
             .catch(error => {

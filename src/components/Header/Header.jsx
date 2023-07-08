@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import Lottie from "lottie-react";
 import g2 from '../../../public/g2.json'
+import useAdmin from '../../hooks/useAdmin';
 
 
 const Header = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
+
 
     const handleLogOut = () => {
         logOut()
@@ -17,27 +20,19 @@ const Header = () => {
             })
     }
 
-
-    useEffect(()=>{
-        fetch('http://localhost:5000/users')
-        .then(res => res.json())
-        .then(data => {
-            data.map(item => {
-                // console.log(item);
-            })
-        })
-    },[])
-
-   
-
-
+    
     const navItems = <>
-        
+
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
-        <li> <Link className='font-semibold' to="/allTask">Tasks</Link> </li>
-        { user && <>
-            <li> <Link className='font-semibold' to="/dashboard">Admin Dashboard</Link> </li>
-        </>}
+        {
+            isAdmin ? <>
+                <li> <Link className='font-semibold' to="/dashboard">Admin Dashboard</Link> </li>
+            </>
+                :
+                <>
+                    <li> <Link className='font-semibold' to="/allTask">Tasks</Link> </li>
+                </>
+        }
     </>
 
     const btn = <>
@@ -59,9 +54,9 @@ const Header = () => {
                 <Lottie className='w-24' animationData={g2}></Lottie>
 
 
-                    <div className='w-14 lg:w-52'>
-                        <h2 className='font-bold lg:text-3xl'>To Do <span className='text-red-600 font-semibold'>List</span></h2>
-                    </div>
+                <div className='w-14 lg:w-52'>
+                    <h2 className='font-bold lg:text-3xl'>To Do <span className='text-red-600 font-semibold'>List</span></h2>
+                </div>
 
             </div>
             <div className="navbar-center hidden lg:flex">

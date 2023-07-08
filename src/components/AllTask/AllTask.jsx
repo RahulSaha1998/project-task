@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../providers/AuthProvider';
+import Loader from '../Loader/Loader';
 
 const AllTask = () => {
 
     const loadedTask = useLoaderData();
     const [tasks, setTasks] = useState(loadedTask);
+
+    const { loading } = useContext(AuthContext);
+
+    if (loading) {
+        return <Loader></Loader>
+    }
 
     const handleDelete = _id => {
         console.log(_id);
@@ -17,7 +25,6 @@ const AllTask = () => {
                 console.log(data);
                 if (data.deletedCount > 0) {
                     Swal.fire({
-                        position: 'top-bottom',
                         icon: 'success',
                         title: 'Delete Successful!',
                         showConfirmButton: false,

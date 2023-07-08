@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -8,6 +8,7 @@ const Update = () => {
     const loadedTask = useLoaderData()
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+
 
     const handelUpdateTask = async (event) => {
         event.preventDefault();
@@ -38,7 +39,6 @@ const Update = () => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
                     Swal.fire({
-                        position: 'top-bottom',
                         icon: 'success',
                         title: 'Task Updated Successfully!',
                         showConfirmButton: false,
@@ -94,16 +94,6 @@ const Update = () => {
                                     className="input input-info"
                                 />
                             </div>
-
-                            {/* <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Status</span>
-                                </label>
-                                <input type="text" defaultValue={loadedTask.status}
-                                    name='status'
-                                    className="input input-info"
-                                />
-                            </div> */}
 
                             <div className="form-control">
                                 <label className="label">

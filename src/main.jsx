@@ -13,6 +13,12 @@ import AuthProvider from './providers/AuthProvider';
 import AllTask from './components/AllTask/AllTask';
 import Update from './components/Update/Update';
 import Dashboard from './components/Dashboard/Dashboard';
+import PrivateRoute from './route/PrivateRoute';
+import AdminRoute from './route/AdminRoute';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
+
 
 const router = createBrowserRouter([
   {
@@ -33,18 +39,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <AdminRoute><Dashboard></Dashboard></AdminRoute>,
         loader: () => fetch('http://localhost:5000/tasks')
       },
       {
         path: '/allTask',
-        element: <AllTask></AllTask>,
+        element: <PrivateRoute><AllTask></AllTask></PrivateRoute>,
         loader: () => fetch('http://localhost:5000/tasks')
       },
       {
         path: '/update/:id',
         element: <Update></Update>,
-        loader: ({params}) => fetch(`http://localhost:5000/tasks/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`)
       },
     ]
   },
@@ -53,7 +59,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>
 );

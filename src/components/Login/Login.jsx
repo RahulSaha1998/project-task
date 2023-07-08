@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 // import SocialLogin from '../SocialLogin/SocialLogin';
 import { AuthContext } from '../../providers/AuthProvider';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import Swal from 'sweetalert2';
 // import useTitle from '../../hooks/useTitile';
 
 const Login = () => {
@@ -36,6 +37,12 @@ const Login = () => {
                 setError('');
                 form.reset();
                 setSuccess('successfully Login!');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 navigate(from, { replace: true })
             })
             .catch(error => {

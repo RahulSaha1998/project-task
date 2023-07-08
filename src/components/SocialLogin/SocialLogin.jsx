@@ -10,8 +10,6 @@ const SocialLogin = () => {
     const location = useLocation();
     const [role, setRole] = useState("user");
 
-    // console.log(location);
-
     const from = location.state?.from?.pathname || '/';
 
     const { signInWGoogle,

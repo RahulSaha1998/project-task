@@ -1,56 +1,67 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 // import SectionTitle from '../SectionTitle/SectionTitle';
 
 const AddTask = () => {
 
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
+    const handleAddTask = async (event) => {
+        if (user && user.email) {
+            event.preventDefault();
+            const form = event.target;
+            const title = form.title.value;
+            const date = form.date.value;
+            const status = form.status.value;
+            const desc = form.desc.value;
+            const name = user?.displayName;
 
-    const handelAddTask = async (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const title = form.title.value;
-        const date = form.date.value;
-        const status = form.status.value;
-        const desc = form.desc.value;
-        const name = user?.displayName;
+            const task = {
+                title: title,
+                name,
+                date,
+                status,
+                description: desc
+            };
+            console.log(task);
 
-
-        const task = {
-            title: title,
-            name,
-            date,
-            status,
-            description: desc
-        };
-        console.log(task);
-
-        fetch('http://localhost:5000/tasks', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(task)
-        })
-            .then(res => res.json())
-            .then(data => {
+            try {
+                const response = await fetch('http://localhost:5000/tasks', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(task)
+                });
+                const data = await response.json();
                 console.log(data);
                 if (data.insertedId) {
-                    Swal.fire({
-                        position: 'top-bottom',
+                    await Swal.fire({
                         icon: 'success',
                         title: 'Successfully added to Tasks!',
                         showConfirmButton: false,
                         timer: 2000
-                      })
+                    });
                     form.reset();
                 }
-            })
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'You have to Login first!',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            navigate('/login');
+        }
+    };
 
 
-    }
 
     return (
         <div>
@@ -64,7 +75,7 @@ const AddTask = () => {
                 <div className='bg-slate-200 rounded-lg shadow-xl mt-5 p-7 mb-5'>
 
                     {/* <Fade> */}
-                    <form onSubmit={handelAddTask} className='w-[80%] mx-auto '>
+                    <form onSubmit={handleAddTask} className='w-[80%] mx-auto '>
                         <div className='grid grid-cols-2 gap-5'>
                             <div className="form-control">
                                 <label className="label">

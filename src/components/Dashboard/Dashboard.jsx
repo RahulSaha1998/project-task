@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import Chart1 from '../Chart/Chart1';
+import { AuthContext } from '../../providers/AuthProvider';
+import Loader from '../Loader/Loader';
 
 
 
 const Dashboard = () => {
+
+
+    const { loading } = useContext(AuthContext);
+
+    if (loading) {
+        return <Loader></Loader>
+    }
 
     const loadedTask = useLoaderData();
 
@@ -24,7 +33,6 @@ const Dashboard = () => {
                 console.log(data);
                 if (data.deletedCount > 0) {
                     Swal.fire({
-                        position: 'top-bottom',
                         icon: 'success',
                         title: 'Delete Successful!',
                         showConfirmButton: false,
@@ -60,7 +68,7 @@ const Dashboard = () => {
         <>
             <div>
                 <div className='mt-10'>
-                    <SectionTitle heading='Manage Tasks' />
+                    <SectionTitle heading='View Tasks' />
                 </div>
 
                 <div className='text-center mb-2'>
@@ -80,8 +88,8 @@ const Dashboard = () => {
                                 <th className='text-center'>Due Date</th>
                                 <th className='text-center'>Status</th>
                                 <th className='text-center'>Assigned User</th>
-                                <th className='text-center'>Update</th>
-                                <th className='text-center'>Delete</th>
+                                <th className='text-center'>Action</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -101,10 +109,8 @@ const Dashboard = () => {
                                         <td className='text-center'>{task.date}</td>
                                         <td className='text-center'>{task.status}</td>
                                         <td className='text-center'>{task.name}</td>
-                                        <td className='text-center'><Link to={`/update/${task._id}`}>
-                                            <button className='btn btn-info'>Update</button>
-                                        </Link></td>
                                         <td className='text-center'><button onClick={() => handleDelete(task._id)} className='btn btn-error'>Delete</button></td>
+                                        
                                     </tr>
                                 )
                             }
