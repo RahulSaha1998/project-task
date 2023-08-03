@@ -9,7 +9,7 @@ const Footer = () => {
                 <div>
                 <Lottie className='w-24' animationData={g2}></Lottie>
                     <p className="font-bold">
-                        To Do List
+                        Task Management System
                     </p>
                     <p className="font-bold">Copyright © 2023 - All right reserved by <br /> Rahul Saha</p>
                     <div className='lg:flex gap-3'>

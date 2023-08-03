@@ -33,7 +33,7 @@ const Header = () => {
             </>
                 :
                 <>
-                    <li> <Link className='font-semibold' to="/allTask">Tasks</Link> </li>
+                    <li> <Link className='font-semibold' to="/allTask">All Task</Link> </li>
                 </>
         }
     </>

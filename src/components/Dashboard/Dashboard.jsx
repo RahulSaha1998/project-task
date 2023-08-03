@@ -123,15 +123,14 @@ const Dashboard = () => {
                     </table>
                 </div>
             </div>
-            <div>
+            {/* <div>
                 <div className='mt-10 mb-10'>
                     <SectionTitle heading='D3js Chart' />
                 </div>
                 <div className=' flex justify-center'>
-                    {/* Create d3js chart here */}
                     <Chart1></Chart1>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 };
